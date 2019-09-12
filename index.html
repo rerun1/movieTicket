@@ -7,11 +7,83 @@
     <link rel="stylesheet" href="css/styles.css" type="text/css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/scripts.js"></script>
-    <title>Purchase a Movie Ticket</title>
+    <title>Happy Cinemas</title>
   </head>
   <body>
     <div class="container">
-      <h1>Purchase a Movie Ticket</h1>
+      <div class="row">
+        <div class="col">
+          <h1>Now Showing</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <img src="img/onceUponATime.jpg" alt="Brad Pitt Leonardo De Caprio">
+        </div>
+        <div class="col-md-4">
+          <img src="img/theNightingale.jpg" alt="scary looking beat up girl">
+        </div>
+        <div class="col-md-4">
+          <img src="img/booksmart.jpg" alt="two smart looking women">
+        </div>
+      </div>
+      <form id="movieChoiceInput">
+        <div class="row mb-2">
+          <div class="col-md-4">
+            <div class="form-check">
+              <input type="radio" name="movies" class="movies form-check-input" value="movie1">
+              <label for="movie1">Once Upon A Time in Hollywood</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-check">
+              <input type="radio" name="movies" class="movies form-check-input" value="movie2">
+              <label for="movie2">The Nightingale</label>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-check">
+              <input type="radio" name="movies" class="movies form-check-input" value="movie3">
+              <label for="movie3">Booksmart</label>
+            </div>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-4">
+            <select class="movieTimes custom-select" name="movieTimes">
+              <option value="">Show Times...</option>
+              <option value="mat">2:00 pm</option>
+              <option value="eve">7:00 pm</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-4">
+          <div class="col-md-4">
+            <select class="customerAge custom-select" name="customerAge">
+              <option value="">Age...</option>
+              <option value="child">12 and under</option>
+              <option value="adult">adult</option>
+              <option value="senior">Over 65</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <button type="submit" class="btn btn-warning">Purchase Ticket</button>
+          </div>
+        </div>
+        <div class="warning row" id="errorMessages">
+
+        </div>
+      </form>
+      <div class="row" id="displayCurrentTicketInfo">
+        <div class="col">
+          <ul id="individualTickets">
+
+          </ul>
+          <p id="totalCost"></p>
+        </div>
+      </div>
     </div>
   </body>
 </html>
