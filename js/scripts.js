@@ -1,44 +1,65 @@
-// Business logic for movie object
-function Movie(title,times,type){
-  this.title = title,
-  this.times = times,
-  this.type = type
-}
-var movie1 = new Movie("Once Upon A Time In Hollywood",["matinee","evening"],"first run");
-var movie2 = new Movie("The Nightingale",["matinee","evening"],"second run");
-var movie3 = new Movie("Book Smart",["matinee","evening"],"second run");
-
+// Business logic for movie titles, times, age categories
+var movie1 = "Once Upon A Time In Hollywood"; // first run
+var movie2 = "The Nightingale";// second run
+var movie3 = "Book Smart";// second run
+var mat = "matinee";
+var eve = "evening";
+var child = "child";
+var adult = "adult";
+var senior = "senior";
 // Business Logic for ticket object
-var price1 = 5;
-// first run, matinee, child
-var price2 = 15;
-// first run, matinee, adult
-var price3 = 8;
-// first run, matinee, senior
-var price4 = 10;
-// first run, evening, child
-var price5 = 20;
-// first run, evening, adult
-var price6 = 14;
-// first run, evening, senior
-var price7 = 4;
-// second run, matinee, child
-var price8 = 12;
-// second run, matinee, adult
-var price9 = 9;
-// second run, matinee, senior
-var price10 = 7;
-// second run, evening, child
-var price11 = 16;
-// second run, evening, adult
-var price12 = 13;
-// second run, evening, senior
-var prices = [price1,price2,price3,price4,price5,price6,price7,price8,price9,price10,price11,price12];
-
-var ages = ["child","adult","senior"];
-
-function Ticket(title,time,age){
-  this.title=title,
-  this.time=time,
+function Tickets(customerPurchase){
+  this.customerPurchases = [],
+  this.currentTicketPrice = 0
+}
+Tickets.prototype.addCustomerPurchase = function(customerPurchase) {
+  this.currentTicketPrice += customerPurchase.ticketPrice;
+  this.customerPurchases.push(customerPurchase);
+}
+// Business Logic for Customer
+function CustomerPurchase(movie,time,age){
+  this.movie = movie,
+  this.time = time,
   this.age=age
 }
+CustomerPurchase.prototype.calculateTicketPrice = function(){
+  if ((this.movie===movie1)&&(this.time===eve)&&(this.age===adult)) {
+    this.ticketPrice = 20;
+    return this.ticketPrice;
+  } else if ((this.movie===(movie2 || movie3))&&(this.time===eve)&&(this.age===adult)){
+    this.ticketPrice = 15;
+    return this.ticketPrice;
+  } else if ((this.movie===movie1)&&(this.time===eve)&&(this.age===child)) {
+    this.ticketPrice = 12;
+    return this.ticketPrice;
+  } else if ((this.movie===(movie2 || movie3))&&(this.time===eve)&&(this.age===child)){
+    this.ticketPrice = 7;
+    return this.ticketPrice;
+  } else if  ((this.movie===movie1)&&(this.time===eve)&&(this.age===senior)) {
+    this.ticketPrice = 14;
+    return this.ticketPrice;
+  } else if ((this.movie===(movie2 || movie3))&&(this.time===eve)&&(this.age===senior)){
+    this.ticketPrice = 9;
+    return this.ticketPrice;
+  } else if ((this.movie===movie1)&&(this.time===mat)&&(this.age===adult)) {
+    this.ticketPrice = 15;
+    return this.ticketPrice;
+  } else if ((this.movie===(movie2 || movie3))&&(this.time===mat)&&(this.age===adult)){
+    this.ticketPrice = 10;
+    return this.ticketPrice;
+  } else if ((this.movie===movie1)&&(this.time===mat)&&(this.age===child)) {
+    this.ticketPrice = 7;
+    return this.ticketPrice;
+  } else if ((this.movie===(movie2 || movie3))&&(this.time===mat)&&(this.age===child)){
+    this.ticketPrice = 2;
+    return this.ticketPrice;
+  } else if ((this.movie===movie1)&&(this.time===mat)&&(this.age===senior)) {
+    this.ticketPrice = 9;
+    return this.ticketPrice;
+  } else {
+    this.ticketPrice = 4;
+    return this.ticketPrice;
+  }
+}
+// User interface Logic
+var testTickets = new Tickets();
